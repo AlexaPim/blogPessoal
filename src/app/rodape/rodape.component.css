@@ -23,6 +23,11 @@ ul.social-network li{
     color: blue;
 }
 
-.footer-copyright{
-    background-color: rgb(182, 30, 30);
+.bg-roxo {
+    background: linear-gradient(#8187DC,#9D4EDD ) ;
 }
+
+.footer-copyright{
+    background: linear-gradient(#9D4EDD);
+}
+
