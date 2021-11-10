@@ -11,6 +11,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class EntrarComponent implements OnInit {
 
+  text = '';
   userLogin: UserLogin = new UserLogin()
 
   constructor(
@@ -39,4 +40,9 @@ export class EntrarComponent implements OnInit {
       }
     })
     }
+
+  
+    
 }
+
+
