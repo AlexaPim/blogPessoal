@@ -17,16 +17,13 @@ export class InicioComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
   listaPostagens: Postagem[]
-  
-  
-  
 
   tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number
 
   usuario: Usuario = new Usuario()
-  idUsuario = environment.id
+  idUser = environment.id
 
   constructor(
     private router: Router,
@@ -36,27 +33,19 @@ export class InicioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    window.scroll(0, 0)
 
-    if(environment.token == '') {
-     // alert('Sessão expirada. Faça o login novamente!')
+    if (environment.token == '') {
       this.router.navigate(['/entrar'])
     }
-    console.log("inicio");
-    
-    this.getAllTemas()
-    // this.getAllPostagens()
-    console.log("fim");
-    
-    console.log(this.listaTemas);
-    
 
+    this.getAllTemas()
+    this.getAllPostagens()
   }
 
   getAllTemas() {
     this.temaService.getAllTema().subscribe((resp: Tema[]) => {
       this.listaTemas = resp
-      console.log(this.listaTemas, "texto");
-      
     })
   }
 
@@ -68,12 +57,12 @@ export class InicioComponent implements OnInit {
 
   getAllPostagens() {
     this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) => {
-      // this.listaPostagens = resp
+      this.listaPostagens = resp
     })
   }
 
   findByIdUsuario() {
-    this.authService.getByIdUsuario(this.idUsuario).subscribe((resp: Usuario) => {
+    this.authService.getByIdUsuario(this.idUser).subscribe((resp: Usuario) => {
       this.usuario = resp
     })
   }
@@ -82,15 +71,16 @@ export class InicioComponent implements OnInit {
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
 
-    this.usuario.id = this.idUsuario
+    this.usuario.id = this.idUser
     this.postagem.usuario = this.usuario
 
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
-      alert('Postagem realizada com sucesso!!!')
+      alert('Postagem realizada com sucesso!')
       this.postagem = new Postagem()
       this.getAllPostagens()
     })
+
   }
 
 }

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
@@ -40,7 +39,6 @@ import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delet
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule,
     HttpClientModule,
     FormsModule
   ],
