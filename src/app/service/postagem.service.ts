@@ -17,23 +17,23 @@ export class PostagemService {
   }
 
   getAllPostagens(): Observable<Postagem[]>{
-    return this.http.get<Postagem[]>('http://alexapim.herokuapp.com/postagens', this.token);
+    return this.http.get<Postagem[]>('http://alexapim.herokuapp.com/postagens', { headers: { 'Authorization': environment.userLogin.token } });
   }
 
   getByIdPostagem(id: number): Observable<Postagem>{
-    return this.http.get<Postagem>(`http://alexapim.herokuapp.com/postagens/${id}`, this.token)
+    return this.http.get<Postagem>(`http://alexapim.herokuapp.com/postagens/${id}`, { headers: { 'Authorization': environment.userLogin.token } })
   }
 
   postPostagem(postagem: Postagem): Observable<Postagem>{
-    return this.http.post<Postagem>('http://alexapim.herokuapp.com/postagens', postagem, this.token)
+    return this.http.post<Postagem>('http://alexapim.herokuapp.com/postagens', postagem, { headers: { 'Authorization': environment.userLogin.token } })
   }
 
   putPostagem(postagem: Postagem): Observable<Postagem>{
-    return this.http.put<Postagem>('http://alexapim.herokuapp.com/postagens', postagem, this.token)
+    return this.http.put<Postagem>('http://alexapim.herokuapp.com/postagens', postagem, { headers: { 'Authorization': environment.userLogin.token } })
   }
 
   deletePostagem(id: number) {
-    return this.http.delete(`http://alexapim.herokuapp.com/postagens/${id}`, this.token)
+    return this.http.delete(`http://alexapim.herokuapp.com/postagens/${id}`, { headers: { 'Authorization': environment.userLogin.token } })
   }
 
 }

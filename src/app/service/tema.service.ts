@@ -16,23 +16,23 @@ export class TemaService {
   }
 
   getAllTema(): Observable<Tema[]> {
-    return this.http.get<Tema[]>('http://alexapim.herokuapp.com/tema', this.token)
+    return this.http.get<Tema[]>('http://alexapim.herokuapp.com/tema', { headers: { 'Authorization': environment.userLogin.token } })
   }
 
   getByIdTema(id: number): Observable<Tema> {
-    return this.http.get<Tema>(`http://alexapim.herokuapp.com/tema/${id}`, this.token)
+    return this.http.get<Tema>(`http://alexapim.herokuapp.com/tema/${id}`, { headers: { 'Authorization': environment.userLogin.token } })
   }
 
   postTema(tema: Tema): Observable<Tema> {
-    return this.http.post<Tema>('http://alexapim.herokuapp.com/tema', tema, this.token)
+    return this.http.post<Tema>('http://alexapim.herokuapp.com/tema', tema, { headers: { 'Authorization': environment.userLogin.token } })
   }
 
   putTema(tema: Tema): Observable<Tema> {
-    return this.http.put<Tema>('http://alexapim.herokuapp.com/tema', tema, this.token)
+    return this.http.put<Tema>('http://alexapim.herokuapp.com/tema', tema, { headers: { 'Authorization': environment.userLogin.token } })
   }
 
   deleteTema(id: number) {
-    return this.http.delete(`http://alexapim.herokuapp.com/tema/${id}`, this.token)
+    return this.http.delete(`http://alexapim.herokuapp.com/tema/${id}`, { headers: { 'Authorization': environment.userLogin.token } })
   }
 
 }
